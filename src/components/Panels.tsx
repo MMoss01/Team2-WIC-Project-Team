@@ -43,7 +43,7 @@ export function RegionPanel({
         <span className="text-cyber">&gt; </span>
         {r.function}
       </p>
-      {r.deep && <p className="-mt-3 mb-5 font-mono text-[11px] text-cyber/40">// deep structure, projected onto the surface view</p>}
+      {r.deep && <p className="-mt-3 mb-5 font-mono text-[11px] text-cyber/40">// deep structure: dashed in 2D, visible in 3D x-ray mode</p>}
 
       <Tag>Pathology readout</Tag>
       <ul className="mt-2 space-y-2">

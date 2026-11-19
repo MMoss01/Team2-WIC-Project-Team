@@ -9,6 +9,13 @@ const SOURCES = [
   "Vonsattel JP, et al. Neuropathological classification of Huntington's disease. J Neuropathol Exp Neurol. 1985;44:559–577.",
 ];
 
+const MODEL_SOURCES = [
+  'Fischl B, et al. High-resolution intersubject averaging and a coordinate system for the cortical surface. Human Brain Mapping. 1999;8:272–284. (fsaverage template)',
+  'Desikan RS, et al. An automated labeling system for subdividing the human cerebral cortex on MRI scans into gyral based regions of interest. NeuroImage. 2006;31:968–980. (cortical regions)',
+  'Fischl B, et al. Whole brain segmentation: automated labeling of neuroanatomical structures in the human brain. Neuron. 2002;33:341–355. (subcortical structures)',
+  'Winkler AM. Importing FreeSurfer cortical meshes into Blender. brainder.org, 2012. (mesh conversion approach)',
+];
+
 export function MethodsPage() {
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="max-w-4xl">
@@ -19,9 +26,15 @@ export function MethodsPage() {
         <SciFiPanel className="p-6">
           <Tag>What you're looking at</Tag>
           <p className="mt-3 text-sm leading-relaxed text-slate-300">
-            The scan is a hand-drawn schematic of the left hemisphere seen from the side, styled like an MRI. Deep structures such as
-            the hippocampus and striatum sit inside the brain, so they're drawn with dashed outlines and projected onto the surface to
-            keep them clickable. They are not in their true positions.
+            The 3D model is a real average brain: FreeSurfer's fsaverage template, the standard reference brain built by averaging
+            many people's MRI scans. Its cortex is split into lobes using the Desikan-Killiany atlas, and deep structures come from
+            FreeSurfer's subcortical segmentation, so they sit in their true positions. Two exceptions: the substantia nigra and
+            olfactory bulb aren't in these atlases, so they're shown as small markers at approximate positions, and the brainstem
+            is split into midbrain, pons and medulla by height.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-slate-300">
+            The 2D scan is a hand-drawn schematic of the left hemisphere, styled like an MRI. There, deep structures are drawn
+            dashed and projected onto the surface so they stay clickable; they are not in their true positions.
           </p>
         </SciFiPanel>
         <SciFiPanel className="p-6">
@@ -33,9 +46,20 @@ export function MethodsPage() {
           </p>
         </SciFiPanel>
         <SciFiPanel className="p-6">
-          <Tag>Sources</Tag>
+          <Tag>Staging sources</Tag>
           <ul className="mt-3 space-y-2">
             {SOURCES.map((s) => (
+              <li key={s} className="flex gap-2 font-mono text-xs leading-relaxed text-soft">
+                <span className="text-cyber">&gt;</span>
+                {s}
+              </li>
+            ))}
+          </ul>
+        </SciFiPanel>
+        <SciFiPanel className="p-6">
+          <Tag>3D model data</Tag>
+          <ul className="mt-3 space-y-2">
+            {MODEL_SOURCES.map((s) => (
               <li key={s} className="flex gap-2 font-mono text-xs leading-relaxed text-soft">
                 <span className="text-cyber">&gt;</span>
                 {s}
