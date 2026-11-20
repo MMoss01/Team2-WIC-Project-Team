@@ -91,15 +91,13 @@ To add a region, add an entry to `REGIONS` in `src/data/regions.ts`. To change h
 
 React 19, TypeScript, Vite, Tailwind CSS 4, Motion, lucide-react, and three.js via react-three-fiber for the 3D view. Routing uses `HashRouter`, so the build works on GitHub Pages with no extra config.
 
-## Deploying to GitHub Pages
+## Live site
 
-```bash
-npm run build
-rm -rf docs && mv dist docs && touch docs/.nojekyll
-git add docs && git commit -m "Deploy" && git push
-```
+**https://mmoss01.github.io/Team2-WIC-Project-Team/**
 
-Then in the repo's **Settings → Pages**, serve from the `main` branch, `/docs` folder.
+Every push to `main` deploys automatically through GitHub Actions (`.github/workflows/deploy.yml`): it installs, type-checks, builds, and publishes in about two minutes. Watch progress in the repo's **Actions** tab. If a build fails, the live site keeps the last working version.
+
+To redeploy without a code change, open **Actions → Deploy to GitHub Pages → Run workflow**.
 
 ## Contributing
 
